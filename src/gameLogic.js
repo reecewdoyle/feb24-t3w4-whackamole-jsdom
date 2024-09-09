@@ -2,15 +2,74 @@
 let gameTimeRemaining = 0;
 let defaultGameDruation = 120;
 let gameCountdownInterval = null;
+let startGameButton = document.getElementById("startGameButton");
+let stopGameButton = document.getElementById("stopGameButton");
+
+
+
+// Game Score and Timer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // if gameTimeRemaining < 0){
 
 // }
 
+function toggleGameControlButtons(){
+    // check gameTimeRemaining
+
+    // reveal or hide startGameButton
+
+    // hide or reveal stopGameButton
+
+    if (gameTimeRemaining > 0){
+        // game has started
+        startGameButton.style.display = "none";
+        stopGameButton.style.display = "inherit";
+    } else {
+        // game has finished
+        startGameButton.style.display = "inherit";
+        stopGameButton.style.display = "none";
+    }
+
+}
+
+toggleGameControlButtons();
+
 function startGame(desiredGameTime = defaultGameDruation){
     gameTimeRemaining = desiredGameTime;
     // isGameRunning = true;
     console.log("Started the game. Game time remaining is now: " + gameTimeRemaining);
+
+    // toggle game controls
+    toggleGameControlButtons();
 
     gameCountdownInterval = setInterval(() => {
         gameTimeRemaining -= 1;
@@ -20,7 +79,7 @@ function startGame(desiredGameTime = defaultGameDruation){
             // if game has no time remaining, stop subtracting from it!
             clearInterval(gameCountdownInterval);
             console.log("Game is finished!");
-            
+            stopGame();
         }
         
     }, 1000);
@@ -31,16 +90,18 @@ function startGame(desiredGameTime = defaultGameDruation){
 
 function stopGame(){
     gameTimeRemaining = 0;
+
+    // toggle game controls
+    toggleGameControlButtons();
+
     console.log("Stopped the game. Game time remaining is now: " + gameTimeRemaining);
     
 }
 
-let startGameButton = document.getElementById("startGameButton");
 startGameButton.addEventListener("click", () => {
     startGame(3);
 });
 
-let stopGameButton = document.getElementById("stopGameButton");
 stopGameButton.addEventListener("click", () => {
     stopGame();
 });
