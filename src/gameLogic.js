@@ -7,9 +7,9 @@ let stopGameButton = document.getElementById("stopGameButton");
 let gameUpdateInterval = null;
 let currentGameScore = 0;
 let higestGameScore = 0;
-let scoreDisplatText = document.getElementById("currentGameScore");
-let highscoreDsiplayText = document.getElementById("highscoreDsiplay");
-let timerDisplatText = document.getElementById("currentTimeRemaining");
+let scoreDisplayText = document.getElementById("currentGameScore");
+let highscoreDisplayText = document.getElementById("highscoreDsiplay");
+let timerDisplayText = document.getElementById("currentTimeRemaining");
 
 // Game Score and Timer
 
