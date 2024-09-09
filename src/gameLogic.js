@@ -4,10 +4,23 @@ let defaultGameDruation = 120;
 let gameCountdownInterval = null;
 let startGameButton = document.getElementById("startGameButton");
 let stopGameButton = document.getElementById("stopGameButton");
-
-
+let gameUpdateInterval = null;
+let currentGameScore = 0;
+let higestGameScore = 0;
+let scoreDisplatText = document.getElementById("currentGameScore");
+let highscoreDsiplayText = document.getElementById("highscoreDsiplay");
+let timerDisplatText = document.getElementById("currentTimeRemaining");
 
 // Game Score and Timer
+
+function gameTimeStep(){
+    // update score displayed
+    scoreDisplayText.innerText = "Score: " + currentGameScore;
+
+    // update time remaining displayed
+    timerDisplayText.innerText = "TimeRemaining: " + gameTimeRemaining;
+}
+
 
 
 
@@ -83,6 +96,9 @@ function startGame(desiredGameTime = defaultGameDruation){
         }
         
     }, 1000);
+
+    gameUpdateInterval = setInterval(gameTimeStep, 100);
+
 }
 
 // startGame(); // gameTimeRemaining becomes 120
