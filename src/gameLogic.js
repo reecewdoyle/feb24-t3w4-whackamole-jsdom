@@ -1,24 +1,24 @@
 
 let gameTimeRemaining = 0;
-let defaultGameDruation = 120;
+let defaultGameDuration = 120;
 let gameCountdownInterval = null;
 let startGameButton = document.getElementById("startGameButton");
 let stopGameButton = document.getElementById("stopGameButton");
 let gameUpdateInterval = null;
 let currentGameScore = 0;
-let higestGameScore = 0;
+let highestGameScore = 0;
 let scoreDisplayText = document.getElementById("currentGameScore");
-let highscoreDisplayText = document.getElementById("highscoreDsiplay");
+let highscoreDisplayText = document.getElementById("highScoreDisplay");
 let timerDisplayText = document.getElementById("currentTimeRemaining");
 
-// Game Score and Timer
+// Game Score and Timer 
 
 function gameTimeStep(){
-    // update score displayed
-    scoreDisplayText.innerText = "Score: " + currentGameScore;
+	// update score displayed
+	scoreDisplayText.innerText = "Score: " + currentGameScore;
 
-    // update time remaining displayed
-    timerDisplayText.innerText = "TimeRemaining: " + gameTimeRemaining;
+	// update time remaining displayed
+	timerDisplayText.innerText = "Time Remaining: " + gameTimeRemaining;
 }
 
 
@@ -90,7 +90,7 @@ function startGame(desiredGameTime = defaultGameDruation){
         
         if (gameTimeRemaining <= 0){
             // if game has no time remaining, stop subtracting from it!
-            clearInterval(gameCountdownInterval);
+            
             console.log("Game is finished!");
             stopGame();
         }
@@ -99,6 +99,7 @@ function startGame(desiredGameTime = defaultGameDruation){
 
     gameUpdateInterval = setInterval(gameTimeStep, 100);
 
+
 }
 
 // startGame(); // gameTimeRemaining becomes 120
@@ -106,6 +107,10 @@ function startGame(desiredGameTime = defaultGameDruation){
 
 function stopGame(){
     gameTimeRemaining = 0;
+
+    // stop all intervals
+    clearInterval(gameCountdownInterval);
+    clearInterval(gameUpdateInterval);
 
     // toggle game controls
     toggleGameControlButtons();
