@@ -74,11 +74,11 @@ function wipeImagesFromSpawningAreas(){
 }
 
 function whackamoleHandleClick(event){
-    if (event.target.src != ""){
-        currentGameScore++;
-        event.taget.src = "";
-        console.log("Clicked on a mole! Scpre increased, it's now: " + currentGameScore);
-    }
+	if (event.target.src != ""){
+		currentGameScore++;
+		event.target.src = "";
+		console.log("Clicked on a mole! Score increased, it's now: " + currentGameScore);
+	}
 }
 
 
