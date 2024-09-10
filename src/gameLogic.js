@@ -21,6 +21,14 @@ toggleGameControlButtons();
 toggleGameplayContent();
 updateHighScore();
 
+Array.from(spawnableAreas).forEach(area => {
+	area.addEventListener("click", (event) => {
+		whackamoleHandleClick(event);
+	});
+});
+
+
+
 // Game Score and Timer 
 
 function gameTimeStep(){
@@ -56,8 +64,22 @@ async function spawnMole(){
     // chosenSpawnArea.appendChild(whackamoleImage);
 }
 
+function wipeImagesFromSpawningAreas(){
+    // loop through spawnableAreas
+    // set the src property of each thing to ""
+    console.log(spawnableAreas);  
+    Array.from(spawnableAreas).forEach(area => {
+        area.src = "";
+    });
+}
 
-
+function whackamoleHandleClick(event){
+    if (event.target.src != ""){
+        currentGameScore++;
+        event.taget.src = "";
+        console.log("Clicked on a mole! Scpre increased, it's now: " + currentGameScore);
+    }
+}
 
 
 
@@ -123,6 +145,8 @@ function updateHighScore(){
 
 
 
+
+
 // if gameTimeRemaining < 0){
 
 // }
@@ -148,11 +172,14 @@ function toggleGameControlButtons(){
 
 
 
+
 function startGame(desiredGameTime = defaultGameDruation){
     gameTimeRemaining = desiredGameTime;
     // isGameRunning = true;
     console.log("Started the game. Game time remaining is now: " + gameTimeRemaining);
 
+    currentGameScore = 0;
+    wipeImagesFromSpawningAreas();
     // toggle game controls
     toggleGameControlButtons();
     // toggle game content
@@ -181,9 +208,7 @@ function startGame(desiredGameTime = defaultGameDruation){
         spawnMole();
     }, 1000);
 
-
 }
-
 // startGame(); // gameTimeRemaining becomes 120
 // startGame(60); // gameTimeRemaining becomes 60
 
@@ -200,6 +225,7 @@ function stopGame(){
     toggleGameControlButtons();
     // toggle game content
     toggleGameplayContent();
+    wipeImagesFromSpawningAreas();
 
     console.log("Stopped the game. Game time remaining is now: " + gameTimeRemaining);
     
