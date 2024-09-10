@@ -2,7 +2,6 @@
 
 Whackamole game in the browser using HTML and JS.
 
-
 - Game menu
     - start hame button
         - disappears once the game starts
@@ -20,3 +19,8 @@ Whackamole game in the browser using HTML and JS.
         - disappear on click
         - increase score on click
         - disappear after a timer
+
+## Nice To have
+
+- Make the cursor a hammer
+    - only when the game is running
